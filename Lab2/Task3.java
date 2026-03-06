@@ -1,4 +1,3 @@
-package Lab2;
 import java.util.Scanner;
 
 public class Task3 {
@@ -36,5 +35,4 @@ public class Task3 {
                 break;
         }
     }
-    
 }
