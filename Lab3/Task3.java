@@ -19,7 +19,7 @@ public class Task3 {
 
             while ((line = br.readLine()) != null){
                 lines++;
-                chars += line.length();
+                chars += line.length() + 1; // +1 для учета символа новой строки
 
                 String[] split = line.trim().split("\\s+");
                 if (!line.trim().isEmpty()){
