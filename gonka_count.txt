@@ -1,0 +1,27 @@
+public class TestProject {
+
+    public static void main(String[] args) {
+        long start =  System.currentTimeMillis();
+        int[] counter = {0};
+        IntStream.range(0, 1000000).parallel().forEach(i->counter[0]++);
+        long finish = System.currentTimeMillis();
+        System.out.println("Получилось:" + counter[0]);
+        System.out.println(" Итоговое время:" + (finish-start));
+        
+        
+        long start1 =  System.currentTimeMillis();
+        AtomicInteger counter1 = new AtomicInteger();
+        IntStream.range(0, 1000000).parallel().forEach(i -> counter1.incrementAndGet());
+        long finish1 = System.currentTimeMillis();
+        System.out.println("Получилось:" + counter1.get());
+        System.out.println(" Итоговое время:" + (finish1-start1));
+        
+        
+        long start2 =  System.currentTimeMillis();
+        long sum = IntStream.range(0, 1000000).parallel().count();
+        long finish2 = System.currentTimeMillis();
+        System.out.println("Получилось:" + sum);
+        System.out.println(" Итоговое время:" + (finish2-start2));
+        
+    }
+}
