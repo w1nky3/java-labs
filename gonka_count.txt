@@ -22,6 +22,27 @@ public class TestProject {
         long finish2 = System.currentTimeMillis();
         System.out.println("Получилось:" + sum);
         System.out.println(" Итоговое время:" + (finish2-start2));
+
+        //Порядок 0-9
+        long start3 =  System.currentTimeMillis();
+        IntStream.range(0, 10).parallel().forEach(i -> System.out.print(i + ""));
+        long finish3 = System.currentTimeMillis();
+        System.out.println();
+        System.out.println(" Итоговое время:" + (finish3-start3));
         
+        long start4 =  System.currentTimeMillis();
+        List<Integer> result = IntStream.range(0, 10).parallel().boxed().collect(Collectors.toList());
+        long finish4 = System.currentTimeMillis();
+        System.out.println(result);
+        System.out.println(" Итоговое время:" + (finish4-start4));
+        System.out.println();
+        
+        
+        long start5 =  System.currentTimeMillis();
+        List<Integer> evens = IntStream.range(0, 100).parallel().filter(n -> n % 2 == 0).boxed().collect(Collectors.toList());
+        long finish5 = System.currentTimeMillis();
+        System.out.println("Четные:");
+        System.out.println(evens);
+        System.out.println(" Итоговое время:" + (finish5-start5));
     }
 }
